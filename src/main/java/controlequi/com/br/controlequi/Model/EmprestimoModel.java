@@ -11,42 +11,42 @@ import java.time.LocalDate;
 public class EmprestimoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEmprestimo;
 
     @ManyToOne
-    @JoinColumn(name = "id_Funcionario", referencedColumnName = "id_Funcionario")
+    @JoinColumn(name = "idFuncionario", referencedColumnName = "idFuncionario")
     private FuncionarioModel funcionario;
 
     @ManyToOne
-    @JoinColumn(name = "id_Tecnico", referencedColumnName = "id_Tecnico")
+    @JoinColumn(name = "idTecnico", referencedColumnName = "idTecnico")
     private TecnicoModel tecnico;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate data_emprestimo;
+    private LocalDate dataEmprestimo;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate data_devolucao;
+    private LocalDate dataDevolucao;
 
     @ManyToOne
-    @JoinColumn(name = "id_Equipamento", referencedColumnName = "id_Equipamento")
-    private Long equipamento;
+    @JoinColumn(name = "idEquipamento", referencedColumnName = "idEquipamento")
+    private EquipamentoModel equipamento;
 
     public EmprestimoModel(){}
 
 
-    public LocalDate getData_emprestimo() {
-        return data_emprestimo;
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
     }
 
-    public void setData_emprestimo(LocalDate data_emprestimo) {
-        this.data_emprestimo = data_emprestimo;
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
     }
 
-    public LocalDate getData_devolucao() {
-        return data_devolucao;
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
     }
 
-    public void setData_devolucao(LocalDate data_devolucao) {
-        this.data_devolucao = data_devolucao;
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
 }

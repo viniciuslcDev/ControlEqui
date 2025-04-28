@@ -9,10 +9,10 @@ public class TecnicoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idTecnico;
 
     @OneToOne
-    @JoinColumn(name = "id_Funcionario", referencedColumnName = "id_Funcionario")
+    @JoinColumn(name = "idFuncionario", referencedColumnName = "idFuncionario")
     private FuncionarioModel funcionario;
 
     public  TecnicoModel(){}

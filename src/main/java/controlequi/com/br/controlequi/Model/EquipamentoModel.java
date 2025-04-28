@@ -15,7 +15,7 @@ public class EquipamentoModel {
     private LocalDate dataAquisicao;
 
     @ManyToOne
-    @JoinColumn(name = "id_funcionario", referencedColumnName = "id_funcionario", nullable = false)
+    @JoinColumn(name = "idFuncionario", referencedColumnName = "idFuncionario", nullable = false)
     private FuncionarioModel funcionario;
 
     @Column(name = "tipo_equipamento", nullable = false)

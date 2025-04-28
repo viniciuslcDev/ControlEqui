@@ -2,7 +2,6 @@ package controlequi.com.br.controlequi.Service;
 
 import controlequi.com.br.controlequi.Model.EmprestimoModel;
 import controlequi.com.br.controlequi.Repository.EmprestimoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +33,8 @@ public class EmprestimoService {
 
         if (emprestimoExistente.isPresent()) {
             EmprestimoModel emprestimo = emprestimoExistente.get();
-            emprestimo.setData_emprestimo(emprestimoAtualizado.getData_emprestimo());
-            emprestimo.setData_devolucao(emprestimoAtualizado.getData_devolucao());
+            emprestimo.setDataEmprestimo(emprestimoAtualizado.getDataEmprestimo());
+            emprestimo.setDataDevolucao(emprestimoAtualizado.getDataDevolucao());
 
             return emprestimoRepository.save(emprestimo);
         } else {
