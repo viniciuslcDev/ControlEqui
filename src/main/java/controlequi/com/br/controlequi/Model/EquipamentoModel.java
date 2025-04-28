@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "equipamentos")
-public class Equipamento {
+public class EquipamentoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,9 +14,9 @@ public class Equipamento {
     @Column(name = "data_aquisicao", nullable = false)
     private LocalDate dataAquisicao;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "id_Funcionario", referencedColumnName = "id_Funcionario", nullable = false)
-    private Funcionario funcionario;
+    private FuncionarioModel funcionario;
 
     @Column(name = "tipo_equipamento", nullable = false)
     private String tipoEquipamento;
