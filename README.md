@@ -17,6 +17,28 @@ Com o **ControlEqui**, é possível **cadastrar funcionários** e registrar os *
 
 Com o **ControlEqui**, sua empresa ganha mais **eficiência** e **gestão estratégica**, tornando o uso dos equipamentos mais ágil e seguro. 🚀
 
+
+# 🛠 Tecnologias Utilizadas
+
+🚀 O desenvolvimento do projeto contou com diversas ferramentas e tecnologias modernas para garantir eficiência e escalabilidade. Entre elas:
+
+- ☕ **Java 21** – Linguagem robusta e atualizada para desenvolvimento backend
+- 🖥 **IntelliJ IDEA** – Ambiente de desenvolvimento integrado (IDE) para produtividade máxima
+- 🎨 **Figma** – Plataforma de design colaborativo para criação de interfaces intuitivas
+- ☁ **Aviencloud** – Solução de nuvem para armazenamento e integração de dados
+- 🛢 **MySQL** – Banco de dados relacional para gestão eficiente de informações
+- 🐬 **DBeaver** – Ferramenta poderosa para administração de bancos de dados
+- 🔗 **GitHub** – Controle de versão e colaboração no desenvolvimento
+
+Cada tecnologia desempenha um papel essencial no projeto, garantindo um fluxo de trabalho ágil e organizado. 💡✨
+
+
+### 🏅 Badges
+
+![Java Badge](https://img.shields.io/badge/Java-21-blue)
+![Greagle Badge](https://img.shields.io/badge/Greagle-technology-orange)
+![Release Badge](https://img.shields.io/badge/Release-April-green)
+
 # Autores
 
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131699485?v=4" width=115><br><sub>Vinícius Lima</sub>](https://github.com/viniciuslcDev) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/174913258?v=4" width=115><br><sub>João Estevão</sub>](https://github.com/Joaocamilo1508) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/47798697?v=4" width=115><br><sub>Mateus Santis</sub>](https://github.com/MateuSantis) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/179650194?v=4" width=115><br><sub>Lilian Damasceno</sub>](https://github.com/Liliansod) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/68648529?v=4" width=115><br><sub>Heitor Delvecchi</sub>](https://github.com/Delvecchi) |
