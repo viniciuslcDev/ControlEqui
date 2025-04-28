@@ -13,7 +13,7 @@ public class EmprestimoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "id_Funcionario", referencedColumnName = "id_Funcionario")
     private FuncionarioModel funcionario;
 
