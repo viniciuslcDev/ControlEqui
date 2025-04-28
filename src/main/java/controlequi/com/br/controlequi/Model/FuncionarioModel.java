@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "funcionarios")
-public class Funcionario {
+public class FuncionarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Funcionario {
     private String emailFuncionario;
 
     // Construtor vazio
-    public Funcionario() {
+    public FuncionarioModel() {
     }
 
     // Getters e Setters
