@@ -36,7 +36,7 @@ Cada tecnologia desempenha um papel essencial no projeto, garantindo um fluxo de
 ### 🏅 Badges
 
 ![Java Badge](https://img.shields.io/badge/Java-21-blue)
-![Greagle Badge](https://img.shields.io/badge/Greagle-technology-orange)
+![Gradle Badge](https://img.shields.io/badge/Gradle-build_tool-green)
 ![Release Badge](https://img.shields.io/badge/Release-April-green)
 
 # Autores
