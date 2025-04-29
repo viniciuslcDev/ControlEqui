@@ -36,7 +36,7 @@ public class CriarEmprestimoDelegate implements JavaDelegate {
         Long idPedido = Long.valueOf(String.valueOf(delegateExecution.getVariable("idPedido")));
         PedidoModel pedidoModel = pedidoRepository.findById(idPedido).get();
         EquipamentoModel equipamentoModel = new EquipamentoModel();
-        equipamentoModel.setFuncionario(pedidoModel.getFuncionario());
+
         equipamentoModel.setTipoEquipamento(pedidoModel.getTipoEquipamento());
 
         equipamentoModel.setStatusEquipamento(true);

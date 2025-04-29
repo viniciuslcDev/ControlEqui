@@ -15,9 +15,7 @@ public class EquipamentoModel {
     @Column(name = "data_aquisicao", nullable = false)
     private LocalDate dataAquisicao;
 
-    @ManyToOne
-    @JoinColumn(name = "idFuncionario", referencedColumnName = "idFuncionario", nullable = false)
-    private FuncionarioModel funcionario;
+
 
     @Column(name = "tipo_equipamento", nullable = false)
     private String tipoEquipamento;
@@ -57,13 +55,7 @@ public class EquipamentoModel {
         this.dataAquisicao = dataAquisicao;
     }
 
-    public FuncionarioModel getFuncionario() {
-        return funcionario;
-    }
 
-    public void setFuncionario(FuncionarioModel funcionario) {
-        this.funcionario = funcionario;
-    }
 
     public String getTipoEquipamento() {
         return tipoEquipamento;

@@ -48,7 +48,6 @@ public class EquipamentoService {
             }
             equipamento.setStatusEquipamento(equipamentoAtualizado.isStatusEquipamento());  // Atualiza o status
             equipamento.setDataAquisicao(equipamentoAtualizado.getDataAquisicao());  // Atualiza a data de aquisição
-            equipamento.setFuncionario(equipamentoAtualizado.getFuncionario());  // Atualiza o funcionário
 
             // Salva o equipamento atualizado no banco de dados
             return equipamentoRepository.save(equipamento);
