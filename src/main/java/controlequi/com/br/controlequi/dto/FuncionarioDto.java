@@ -7,20 +7,20 @@ public class FuncionarioDto {
     private String nomeFuncionario;
     private String cpfFuncionario;
     private String cargoArea;
-    private String statusEmpregaticio;
+    private StatusUsuario statusEmpregaticio;
     private Boolean isTecnico;
     private String emailFuncionario;
     private StatusUsuario statusUsuario;
 
-    public FuncionarioDto(Long idFuncionario, String nomeFuncionario, String cpfFuncionario, String cargoArea, String statusEmpregaticio, Boolean isTecnico, String emailFuncionario, StatusUsuario statusUsuario) {
+    public FuncionarioDto(Long idFuncionario, String nomeFuncionario, String cpfFuncionario, String cargoArea, StatusUsuario statusEmpregaticio, Boolean isTecnico, String emailFuncionario, StatusUsuario statusUsuario) {
         this.idFuncionario = idFuncionario;
         this.nomeFuncionario = nomeFuncionario;
         this.cpfFuncionario = cpfFuncionario;
         this.cargoArea = cargoArea;
-        this.statusEmpregaticio = String.valueOf(StatusUsuario.valueOf(statusEmpregaticio));
+        this.statusEmpregaticio = statusEmpregaticio;
         this.isTecnico = isTecnico;
         this.emailFuncionario = emailFuncionario;
-        this.statusUsuario = this.statusUsuario;
+        this.statusUsuario = statusUsuario;
     }
 
 
@@ -64,12 +64,12 @@ public class FuncionarioDto {
         this.cargoArea = cargoArea;
     }
 
-    public String getStatusEmpregaticio() {
+    public StatusUsuario getStatusEmpregaticio() {
         return statusEmpregaticio;
     }
 
-    public void setStatusEmpregaticio(String statusEmpregaticio) {
-        this.statusEmpregaticio = String.valueOf(StatusUsuario.valueOf(statusEmpregaticio));
+    public void setStatusEmpregaticio(StatusUsuario statusEmpregaticio) {
+        this.statusEmpregaticio = statusEmpregaticio;
     }
 
     public Boolean getTecnico() {

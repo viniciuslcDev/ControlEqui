@@ -21,7 +21,7 @@ public class FuncionarioModel {
     private String cargoArea;
 
     @Column(nullable = false)
-    private String statusEmpregaticio;
+    private StatusUsuario statusEmpregaticio;
 
     @Column(nullable = false)
     private Boolean isTecnico;
@@ -83,11 +83,11 @@ public class FuncionarioModel {
         this.cargoArea = cargoArea;
     }
 
-    public String getStatusEmpregaticio() {
+    public StatusUsuario getStatusEmpregaticio() {
         return statusEmpregaticio;
     }
 
-    public void setStatusEmpregaticio(String statusEmpregaticio) {
+    public void setStatusEmpregaticio(StatusUsuario statusEmpregaticio) {
         this.statusEmpregaticio = statusEmpregaticio;
     }
 
