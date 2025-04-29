@@ -2,6 +2,7 @@ package controlequi.com.br.controlequi.Service;
 
 import controlequi.com.br.controlequi.Model.FuncionarioModel;
 import controlequi.com.br.controlequi.Repository.FuncionarioRepository;
+import controlequi.com.br.controlequi.StatusUsuario;
 import controlequi.com.br.controlequi.dto.FuncionarioDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class FuncionarioService {
         model.setStatusEmpregaticio(dto.getStatusEmpregaticio());
         model.setEmailFuncionario(dto.getEmailFuncionario());
         model.setIsTecnico(dto.getTecnico());
+        model.setStatusUsuario(dto.getStatusUsuario());
 
         return funcionarioRepository.save(model);
     }
@@ -64,5 +66,10 @@ public class FuncionarioService {
     // Listar apenas os funcionários que são técnicos
     public List<FuncionarioModel> listarTecnicos() {
         return funcionarioRepository.findTecnicos();
+    }
+
+    public List<FuncionarioModel> buscarPorStatusUsuario(String status){
+        StatusUsuario statusUsuario = StatusUsuario.valueOf(status.toUpperCase());
+        return funcionarioRepository.findByStatusUsuario(statusUsuario);
     }
 }

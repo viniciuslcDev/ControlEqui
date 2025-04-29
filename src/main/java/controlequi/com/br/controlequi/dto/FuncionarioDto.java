@@ -1,6 +1,6 @@
 package controlequi.com.br.controlequi.dto;
 
-import jakarta.validation.constraints.NotNull;
+import controlequi.com.br.controlequi.StatusUsuario;
 
 public class FuncionarioDto {
     private Long idFuncionario;
@@ -10,17 +10,27 @@ public class FuncionarioDto {
     private String statusEmpregaticio;
     private Boolean isTecnico;
     private String emailFuncionario;
+    private StatusUsuario statusUsuario;
 
-    public FuncionarioDto(Long idFuncionario, String nomeFuncionario, String cpfFuncionario, String cargoArea, String statusEmpregaticio, Boolean isTecnico, String emailFuncionario) {
+    public FuncionarioDto(Long idFuncionario, String nomeFuncionario, String cpfFuncionario, String cargoArea, String statusEmpregaticio, Boolean isTecnico, String emailFuncionario, StatusUsuario statusUsuario) {
         this.idFuncionario = idFuncionario;
         this.nomeFuncionario = nomeFuncionario;
         this.cpfFuncionario = cpfFuncionario;
         this.cargoArea = cargoArea;
-        this.statusEmpregaticio = statusEmpregaticio;
+        this.statusEmpregaticio = String.valueOf(StatusUsuario.valueOf(statusEmpregaticio));
         this.isTecnico = isTecnico;
         this.emailFuncionario = emailFuncionario;
+        this.statusUsuario = this.statusUsuario;
     }
 
+
+    public StatusUsuario getStatusUsuario() {
+        return statusUsuario;
+    }
+
+    public void setStatusUsuario(StatusUsuario statusUsuario) {
+        this.statusUsuario = statusUsuario;
+    }
 
     public Long getIdFuncionario() {
         return idFuncionario;
@@ -59,7 +69,7 @@ public class FuncionarioDto {
     }
 
     public void setStatusEmpregaticio(String statusEmpregaticio) {
-        this.statusEmpregaticio = statusEmpregaticio;
+        this.statusEmpregaticio = String.valueOf(StatusUsuario.valueOf(statusEmpregaticio));
     }
 
     public Boolean getTecnico() {
