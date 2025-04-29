@@ -10,4 +10,7 @@ import java.util.List;
 public interface EmprestimoRepository extends JpaRepository<EmprestimoModel, Long> {
 
     List<EmprestimoModel> findByEquipamentoIdEquipamento(Long idEquipamento);
+    List<EmprestimoModel> findByTecnicoIdFuncionario(Long idFuncionario);
+    List<EmprestimoModel> findByEquipamentoFuncionarioIdFuncionario(Long idFuncionario);
+
 }
