@@ -39,6 +39,10 @@ public class FuncionarioModel {
     // Getters e Setters
 
 
+    public void setTecnico(Boolean tecnico) {
+        isTecnico = tecnico;
+    }
+
     public StatusUsuario getStatusUsuario() {
         return statusUsuario;
     }

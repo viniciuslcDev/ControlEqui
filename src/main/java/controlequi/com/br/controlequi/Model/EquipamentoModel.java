@@ -25,7 +25,7 @@ public class EquipamentoModel {
     @Column(name = "status_equipamento", nullable = false)
     private boolean statusEquipamento; // true para "em uso" e false para "em estoque"
 
-    @Column(name = "serial_number", nullable = false, unique = true)
+    @Column(name = "serial_number")
     private int serialNumber;  // Garantir que o SerialNumber seja único
 
     private StatusEnum status;

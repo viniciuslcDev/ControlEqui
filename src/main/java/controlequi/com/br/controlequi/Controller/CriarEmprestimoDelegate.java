@@ -38,19 +38,19 @@ public class CriarEmprestimoDelegate implements JavaDelegate {
         EquipamentoModel equipamentoModel = new EquipamentoModel();
         equipamentoModel.setFuncionario(pedidoModel.getFuncionario());
         equipamentoModel.setTipoEquipamento(pedidoModel.getTipoEquipamento());
-        equipamentoModel.setSerialNumber(pedidoModel.getEquipamento().getSerialNumber());
+
         equipamentoModel.setStatusEquipamento(true);
         equipamentoModel.setDataAquisicao(LocalDate.now());
 
 
         EquipamentoModel equipamento = equipamentoService.salvarEquipamento(equipamentoModel);
         if (equipamento != null) {
-            pedidoModel.setEquipamento(equipamento);
+
             pedidoRepository.save(pedidoModel);
             EmprestimoDto emprestimoDto = new EmprestimoDto();
 
             emprestimoDto.setIdFuncionario(pedidoModel.getFuncionario().getIdFuncionario());
-            emprestimoDto.setIdTecnico(pedidoModel.getTecnico().getIdTecnico());
+            emprestimoDto.setIdTecnico(pedidoModel.getTecnico().getIdFuncionario());
             emprestimoDto.setIdEmprestimo(equipamento.getIdEquipamento());
             emprestimoDto.setDataDevolucao(LocalDate.now().plusMonths(3));
             emprestimoDto.setDataEmprestimo(LocalDate.now());
