@@ -23,13 +23,7 @@ public class FuncionarioDto {
         this.statusUsuario = statusUsuario;
     }
 
-
-    public StatusUsuario getStatusUsuario() {
-        return statusUsuario;
-    }
-
-    public void setStatusUsuario(StatusUsuario statusUsuario) {
-        this.statusUsuario = statusUsuario;
+    public FuncionarioDto() {
     }
 
     public Long getIdFuncionario() {
@@ -88,5 +82,11 @@ public class FuncionarioDto {
         this.emailFuncionario = emailFuncionario;
     }
 
+    public StatusUsuario getStatusUsuario() {
+        return statusUsuario;
+    }
 
+    public void setStatusUsuario(StatusUsuario statusUsuario) {
+        this.statusUsuario = statusUsuario;
+    }
 }

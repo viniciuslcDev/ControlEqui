@@ -25,7 +25,7 @@ public class FuncionarioService {
         model.setCargoArea(dto.getCargoArea());
         model.setStatusEmpregaticio(dto.getStatusEmpregaticio());
         model.setEmailFuncionario(dto.getEmailFuncionario());
-        model.setIsTecnico(dto.getTecnico());
+        model.setTecnico(dto.getTecnico());
         model.setStatusUsuario(dto.getStatusUsuario());
 
         return funcionarioRepository.save(model);
@@ -50,7 +50,7 @@ public class FuncionarioService {
             funcionario.setCpfFuncionario(funcionarioAtualizado.getCpfFuncionario());
             funcionario.setCargoArea(funcionarioAtualizado.getCargoArea());
             funcionario.setStatusEmpregaticio(funcionarioAtualizado.getStatusEmpregaticio());
-            funcionario.setIsTecnico(funcionarioAtualizado.getisTecnico());
+            funcionario.setTecnico(funcionarioAtualizado.getTecnico());
             funcionario.setEmailFuncionario(funcionarioAtualizado.getEmailFuncionario());
             return funcionarioRepository.save(funcionario);
         } else {

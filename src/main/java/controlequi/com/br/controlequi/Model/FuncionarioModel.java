@@ -39,22 +39,6 @@ public class FuncionarioModel {
     // Getters e Setters
 
 
-    public void setTecnico(Boolean tecnico) {
-        isTecnico = tecnico;
-    }
-
-    public StatusUsuario getStatusUsuario() {
-        return statusUsuario;
-    }
-
-    public void setStatusUsuario(StatusUsuario statusUsuario) {
-        this.statusUsuario = statusUsuario;
-    }
-
-    public Boolean getTecnico() {
-        return isTecnico;
-    }
-
     public Long getIdFuncionario() {
         return idFuncionario;
     }
@@ -95,12 +79,12 @@ public class FuncionarioModel {
         this.statusEmpregaticio = statusEmpregaticio;
     }
 
-    public Boolean getisTecnico() {
+    public Boolean getTecnico() {
         return isTecnico;
     }
 
-    public void setIsTecnico(Boolean isTecnico) {
-        this.isTecnico = isTecnico;
+    public void setTecnico(Boolean tecnico) {
+        isTecnico = tecnico;
     }
 
     public String getEmailFuncionario() {
@@ -109,5 +93,13 @@ public class FuncionarioModel {
 
     public void setEmailFuncionario(String emailFuncionario) {
         this.emailFuncionario = emailFuncionario;
+    }
+
+    public StatusUsuario getStatusUsuario() {
+        return statusUsuario;
+    }
+
+    public void setStatusUsuario(StatusUsuario statusUsuario) {
+        this.statusUsuario = statusUsuario;
     }
 }
