@@ -1,0 +1,7 @@
+.swagger-ui {
+    background-color: #1e1e1e; /* Fundo escuro */
+    color: #ffffff; /* Texto branco */
+}
+.swagger-ui .topbar {
+    background-color: #333333; /* Barra superior escura */
+}
