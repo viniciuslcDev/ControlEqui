@@ -42,7 +42,7 @@ public class PedidoService {
         model.setTipoEquipamento(dto.getTipoEquipamento());
 
         PedidoModel save = pedidoRepository.save(model);
-        startProcess(dto.getIdPedido());
+        startProcess(save.getIdPedido());
         return save;
 
 
@@ -62,7 +62,7 @@ public class PedidoService {
 
 
         PedidoModel save = pedidoRepository.save(model);
-        startProcess(dto.getIdPedido());
+        startProcess(save.getIdPedido());
         return save;
 
     }

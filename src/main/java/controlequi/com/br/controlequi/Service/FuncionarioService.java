@@ -19,7 +19,6 @@ public class FuncionarioService {
     // Cadastrar um novo funcionário
     public FuncionarioModel salvarFuncionario(FuncionarioDto dto) {
         FuncionarioModel model = new FuncionarioModel();
-        model.setIdFuncionario(dto.getIdFuncionario());
         model.setNomeFuncionario(dto.getNomeFuncionario());
         model.setCpfFuncionario(dto.getCpfFuncionario());
         model.setCargoArea(dto.getCargoArea());
