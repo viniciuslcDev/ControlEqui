@@ -2,6 +2,7 @@ package controlequi.com.br.controlequi.Controller;
 
 import controlequi.com.br.controlequi.Model.FuncionarioModel;
 import controlequi.com.br.controlequi.Service.FuncionarioService;
+import controlequi.com.br.controlequi.dto.FuncionarioDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,23 @@ public class FuncionarioController {
 
     // Cadastrar novo funcionário
     @PostMapping
-    public ResponseEntity<FuncionarioModel> criarFuncionario(@RequestBody FuncionarioModel funcionario) {
-        FuncionarioModel novoFuncionario = funcionarioService.salvarFuncionario(funcionario);
-        return ResponseEntity.ok(novoFuncionario);
+    public ResponseEntity<FuncionarioDto> criarFuncionario(@RequestBody FuncionarioDto funcionario) {
+        FuncionarioModel funcionarioModel = funcionarioService.salvarFuncionario(funcionario);
+
+        // Converte o Model de volta para o DTO para retornar para o front-end
+        FuncionarioDto respostaDto = new FuncionarioDto(
+                funcionarioModel.getIdFuncionario(),
+                funcionarioModel.getNomeFuncionario(),
+                funcionarioModel.getCpfFuncionario(),
+                funcionarioModel.getCargoArea(),
+                funcionarioModel.getStatusEmpregaticio(),
+                funcionarioModel.getisTecnico(),
+                funcionarioModel.getEmailFuncionario()
+        );
+
+        return ResponseEntity.ok(respostaDto);
     }
+
 
     // Listar todos os funcionários
     @GetMapping

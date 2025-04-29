@@ -33,6 +33,37 @@ public class EmprestimoModel {
 
     public EmprestimoModel(){}
 
+    public void setIdEmprestimo(Long idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
+    }
+
+    public void setFuncionario(FuncionarioModel funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public void setTecnico(TecnicoModel tecnico) {
+        this.tecnico = tecnico;
+    }
+
+    public void setEquipamento(EquipamentoModel equipamento) {
+        this.equipamento = equipamento;
+    }
+
+    public Long getIdEmprestimo() {
+        return idEmprestimo;
+    }
+
+    public FuncionarioModel getFuncionario() {
+        return funcionario;
+    }
+
+    public TecnicoModel getTecnico() {
+        return tecnico;
+    }
+
+    public EquipamentoModel getEquipamento() {
+        return equipamento;
+    }
 
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;

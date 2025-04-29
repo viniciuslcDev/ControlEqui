@@ -2,6 +2,7 @@ package controlequi.com.br.controlequi.Controller;
 
 import controlequi.com.br.controlequi.Model.EmprestimoModel;
 import controlequi.com.br.controlequi.Service.EmprestimoService;
+import controlequi.com.br.controlequi.dto.EmprestimoDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class EmprestimoController {
     }
 
     @PostMapping
-    public EmprestimoModel salvarEmprestimo(@RequestBody EmprestimoModel emprestimo) {
+    public EmprestimoModel salvarEmprestimo(@RequestBody EmprestimoDto emprestimo) {
         return emprestimoService.salvarEmprestimo(emprestimo);
     }
 

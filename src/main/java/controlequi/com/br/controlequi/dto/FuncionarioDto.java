@@ -1,44 +1,26 @@
-package controlequi.com.br.controlequi.Model;
+package controlequi.com.br.controlequi.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "funcionarios")
-public class FuncionarioModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FuncionarioDto {
     private Long idFuncionario;
-
-    @Column(nullable = false)
     private String nomeFuncionario;
-
-    @Column(unique = true, nullable = false, length = 11)
     private String cpfFuncionario;
-
-    @Column(nullable = false)
     private String cargoArea;
-
-    @Column(nullable = false)
     private String statusEmpregaticio;
-
-    @Column(nullable = false)
     private Boolean isTecnico;
-
-    // Novo campo adicionado:
-    @Column(nullable = false, unique = true)
     private String emailFuncionario;
 
-    // Construtor vazio
-    public FuncionarioModel() {
+    public FuncionarioDto(Long idFuncionario, String nomeFuncionario, String cpfFuncionario, String cargoArea, String statusEmpregaticio, Boolean isTecnico, String emailFuncionario) {
+        this.idFuncionario = idFuncionario;
+        this.nomeFuncionario = nomeFuncionario;
+        this.cpfFuncionario = cpfFuncionario;
+        this.cargoArea = cargoArea;
+        this.statusEmpregaticio = statusEmpregaticio;
+        this.isTecnico = isTecnico;
+        this.emailFuncionario = emailFuncionario;
     }
 
-    // Getters e Setters
-
-
-    public Boolean getTecnico() {
-        return isTecnico;
-    }
 
     public Long getIdFuncionario() {
         return idFuncionario;
@@ -80,12 +62,12 @@ public class FuncionarioModel {
         this.statusEmpregaticio = statusEmpregaticio;
     }
 
-    public Boolean getisTecnico() {
+    public Boolean getTecnico() {
         return isTecnico;
     }
 
-    public void setIsTecnico(Boolean isTecnico) {
-        this.isTecnico = isTecnico;
+    public void setTecnico(Boolean tecnico) {
+        isTecnico = tecnico;
     }
 
     public String getEmailFuncionario() {
@@ -95,4 +77,6 @@ public class FuncionarioModel {
     public void setEmailFuncionario(String emailFuncionario) {
         this.emailFuncionario = emailFuncionario;
     }
+
+
 }

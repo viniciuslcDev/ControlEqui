@@ -17,6 +17,10 @@ public class TecnicoModel {
 
     public  TecnicoModel(){}
 
+    public Long getIdTecnico() {
+        return idTecnico;
+    }
+
     public FuncionarioModel getFuncionario() {
         return funcionario;
     }

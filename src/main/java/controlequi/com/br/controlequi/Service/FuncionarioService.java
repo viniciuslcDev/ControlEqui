@@ -2,6 +2,7 @@ package controlequi.com.br.controlequi.Service;
 
 import controlequi.com.br.controlequi.Model.FuncionarioModel;
 import controlequi.com.br.controlequi.Repository.FuncionarioRepository;
+import controlequi.com.br.controlequi.dto.FuncionarioDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,16 @@ public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;
 
     // Cadastrar um novo funcionário
-    public FuncionarioModel salvarFuncionario(FuncionarioModel funcionario) {
-        return funcionarioRepository.save(funcionario);
+    public FuncionarioModel salvarFuncionario(FuncionarioDto dto) {
+        FuncionarioModel model = new FuncionarioModel();
+        model.setIdFuncionario(dto.getIdFuncionario());
+        model.setNomeFuncionario(dto.getNomeFuncionario());
+        model.setCpfFuncionario(dto.getCpfFuncionario());
+        model.setCargoArea(dto.getCargoArea());
+        model.setStatusEmpregaticio(dto.getStatusEmpregaticio());
+        model.setEmailFuncionario(dto.getEmailFuncionario());
+
+        return funcionarioRepository.save(model);
     }
 
     // Listar todos os funcionários
@@ -39,7 +48,7 @@ public class FuncionarioService {
             funcionario.setCpfFuncionario(funcionarioAtualizado.getCpfFuncionario());
             funcionario.setCargoArea(funcionarioAtualizado.getCargoArea());
             funcionario.setStatusEmpregaticio(funcionarioAtualizado.getStatusEmpregaticio());
-            funcionario.setIsTecnico(funcionarioAtualizado.getIsTecnico());
+            funcionario.setIsTecnico(funcionarioAtualizado.getisTecnico());
             funcionario.setEmailFuncionario(funcionarioAtualizado.getEmailFuncionario());
 
             return funcionarioRepository.save(funcionario);
