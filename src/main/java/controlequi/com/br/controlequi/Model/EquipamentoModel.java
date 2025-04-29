@@ -1,6 +1,6 @@
 package controlequi.com.br.controlequi.Model;
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -14,8 +14,8 @@ public class EquipamentoModel {
     @Column(name = "data_aquisicao", nullable = false)
     private LocalDate dataAquisicao;
 
-    @ManyToMany
-    @JoinColumn(name = "id_Funcionario", referencedColumnName = "id_Funcionario", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "idFuncionario", referencedColumnName = "idFuncionario", nullable = false)
     private FuncionarioModel funcionario;
 
     @Column(name = "tipo_equipamento", nullable = false)
@@ -24,7 +24,55 @@ public class EquipamentoModel {
     @Column(name = "status_equipamento", nullable = false)
     private boolean statusEquipamento; // true para "em uso" e false para "em estoque"
 
-    @Column(nullable = false)
-    private int SerialNumber;
+    @Column(name = "serial_number", nullable = false, unique = true)
+    private int serialNumber;  // Garantir que o SerialNumber seja único
 
+    // Getters e Setters
+    public Long getIdEquipamento() {
+        return idEquipamento;
+    }
+
+    public void setIdEquipamento(Long idEquipamento) {
+        this.idEquipamento = idEquipamento;
+    }
+
+    public LocalDate getDataAquisicao() {
+        return dataAquisicao;
+    }
+
+    public void setDataAquisicao(LocalDate dataAquisicao) {
+        this.dataAquisicao = dataAquisicao;
+    }
+
+    public FuncionarioModel getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(FuncionarioModel funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public String getTipoEquipamento() {
+        return tipoEquipamento;
+    }
+
+    public void setTipoEquipamento(String tipoEquipamento) {
+        this.tipoEquipamento = tipoEquipamento;
+    }
+
+    public boolean isStatusEquipamento() {
+        return statusEquipamento;
+    }
+
+    public void setStatusEquipamento(boolean statusEquipamento) {
+        this.statusEquipamento = statusEquipamento;
+    }
+
+    public int getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(int serialNumber) {
+        this.serialNumber = serialNumber;
+    }
 }
