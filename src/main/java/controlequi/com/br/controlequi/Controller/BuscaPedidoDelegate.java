@@ -28,7 +28,7 @@ public class BuscaPedidoDelegate implements JavaDelegate {
         if (pedidoModel.isPresent()) {
             PedidoModel pedido = pedidoModel.get();
             logger.info("Pedido encontrado: " + idPedido);
-            execution.setVariable("status",pedido.getStatusPedido());
+            execution.setVariable("status",pedido.getStatusPedido().name());
         } else {
             logger.error("Pedido não encontrado com ID: " + idPedido);
             throw new Exception("Pedido não encontrado");

@@ -20,11 +20,11 @@
       <bpmn:incoming>Flow_1y51fne</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0n437du" name="Aprovado" sourceRef="Gateway_1w0hcim" targetRef="Activity_1g1zrzc">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${status != Aprovado }</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${status == "APROVADO" }</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_038d2ny" sourceRef="Activity_1g1zrzc" targetRef="Event_118lyxy" />
     <bpmn:sequenceFlow id="Flow_1y51fne" name="Cancelado ou Pendente" sourceRef="Gateway_1w0hcim" targetRef="Event_118lyxy">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${status == Cancelado || status == Pendente}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${status == "CANCELADO" || status == "PENDENTE"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="Activity_1g1zrzc" name="Cria emprestimo" camunda:delegateExpression="${criarEmprestimoDelegate}">
       <bpmn:incoming>Flow_0n437du</bpmn:incoming>
@@ -74,17 +74,17 @@
           <dc:Bounds x="456" y="163" width="48" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_038d2ny_di" bpmnElement="Flow_038d2ny">
+        <di:waypoint x="630" y="120" />
+        <di:waypoint x="746" y="120" />
+        <di:waypoint x="746" y="269" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1y51fne_di" bpmnElement="Flow_1y51fne">
         <di:waypoint x="475" y="287" />
         <di:waypoint x="728" y="287" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="568" y="296" width="68" height="27" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_038d2ny_di" bpmnElement="Flow_038d2ny">
-        <di:waypoint x="630" y="120" />
-        <di:waypoint x="746" y="120" />
-        <di:waypoint x="746" y="269" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
