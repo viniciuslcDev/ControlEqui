@@ -23,6 +23,12 @@ public class EmprestimoController {
         return  emprestimoService.listarEmprestimo();
     }
 
+    @GetMapping("/equipamento/{idEquipamento}")
+    public List<EmprestimoModel> listarEmprestimosPorEquipamento(@PathVariable Long idEquipamento) {
+        return emprestimoService.buscarPorIdEquipamento(idEquipamento);
+    }
+
+
     @PostMapping
     public EmprestimoModel salvarEmprestimo(@RequestBody EmprestimoDto emprestimo) {
         return emprestimoService.salvarEmprestimo(emprestimo);

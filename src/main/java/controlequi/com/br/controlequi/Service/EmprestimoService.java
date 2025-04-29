@@ -60,6 +60,10 @@ public class EmprestimoService {
         return emprestimoRepository.findById(id);
     }
 
+    public List<EmprestimoModel> buscarPorIdEquipamento(Long idEquipamento) {
+        return emprestimoRepository.findByEquipamentoIdEquipamento(idEquipamento);
+    }
+
     public  EmprestimoModel atualizarEmprestimo(Long id, EmprestimoModel emprestimoAtualizado) {
         Optional<EmprestimoModel> emprestimoExistente = emprestimoRepository.findById(id);
 
