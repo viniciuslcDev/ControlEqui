@@ -42,7 +42,6 @@ public class FuncionarioService {
     // Atualizar um funcionário
     public FuncionarioModel atualizarFuncionario(Long id, FuncionarioModel funcionarioAtualizado) {
         Optional<FuncionarioModel> funcionarioExistente = funcionarioRepository.findById(id);
-
         if (funcionarioExistente.isPresent()) {
             FuncionarioModel funcionario = funcionarioExistente.get();
             funcionario.setNomeFuncionario(funcionarioAtualizado.getNomeFuncionario());
@@ -51,15 +50,19 @@ public class FuncionarioService {
             funcionario.setStatusEmpregaticio(funcionarioAtualizado.getStatusEmpregaticio());
             funcionario.setIsTecnico(funcionarioAtualizado.getisTecnico());
             funcionario.setEmailFuncionario(funcionarioAtualizado.getEmailFuncionario());
-
             return funcionarioRepository.save(funcionario);
         } else {
-            return null; // ou pode lançar uma exceção personalizada
+            return null; // ou lançar exceção personalizada
         }
     }
 
     // Deletar um funcionário
     public void deletarFuncionario(Long id) {
         funcionarioRepository.deleteById(id);
+    }
+
+    // Listar apenas os funcionários que são técnicos
+    public List<FuncionarioModel> listarTecnicos() {
+        return funcionarioRepository.findTecnicos();
     }
 }
