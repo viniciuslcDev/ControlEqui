@@ -1,38 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn">
-    <bpmn:process id="my-project-process" isExecutable="true" camunda:historyTimeToLive="180">
-        <bpmn:startEvent id="StartEvent_1">
-            <bpmn:outgoing>SequenceFlow_1fp17al</bpmn:outgoing>
-        </bpmn:startEvent>
-        <bpmn:sequenceFlow id="SequenceFlow_1fp17al" sourceRef="StartEvent_1" targetRef="say-hello" />
-        <bpmn:endEvent id="EndEvent_0x6ir2l">
-            <bpmn:incoming>SequenceFlow_16gzt2m</bpmn:incoming>
-        </bpmn:endEvent>
-        <bpmn:sequenceFlow id="SequenceFlow_16gzt2m" sourceRef="say-hello" targetRef="EndEvent_0x6ir2l" />
-        <bpmn:userTask id="say-hello" name="Say hello to&#10;demo" camunda:candidateUsers="demo">
-            <bpmn:incoming>SequenceFlow_1fp17al</bpmn:incoming>
-            <bpmn:outgoing>SequenceFlow_16gzt2m</bpmn:outgoing>
-        </bpmn:userTask>
-    </bpmn:process>
-    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-        <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="my-project-process">
-            <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-                <dc:Bounds x="179" y="99" width="36" height="36" />
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape id="EndEvent_0x6ir2l_di" bpmnElement="EndEvent_0x6ir2l">
-                <dc:Bounds x="432" y="99" width="36" height="36" />
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape id="UserTask_08mft2c_di" bpmnElement="say-hello">
-                <dc:Bounds x="270" y="77" width="100" height="80" />
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNEdge id="SequenceFlow_1fp17al_di" bpmnElement="SequenceFlow_1fp17al">
-                <di:waypoint x="215" y="117" />
-                <di:waypoint x="270" y="117" />
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge id="SequenceFlow_16gzt2m_di" bpmnElement="SequenceFlow_16gzt2m">
-                <di:waypoint x="370" y="117" />
-                <di:waypoint x="432" y="117" />
-            </bpmndi:BPMNEdge>
-        </bpmndi:BPMNPlane>
-    </bpmndi:BPMNDiagram>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.32.0">
+  <bpmn:process id="my-project-process" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1" name="Início">
+      <bpmn:outgoing>SequenceFlow_1fp17al</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1fp17al" sourceRef="StartEvent_1" targetRef="say-hello" />
+    <bpmn:serviceTask id="say-hello" name="Buscar status" camunda:delegateExpression="${buscaPedidoDelegate}">
+      <bpmn:incoming>SequenceFlow_1fp17al</bpmn:incoming>
+      <bpmn:outgoing>Flow_1trqz8q</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1w0hcim" name="Qual status do pedido?">
+      <bpmn:incoming>Flow_1trqz8q</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n437du</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1y51fne</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1trqz8q" sourceRef="say-hello" targetRef="Gateway_1w0hcim" />
+    <bpmn:endEvent id="Event_118lyxy" name="Fim">
+      <bpmn:incoming>Flow_038d2ny</bpmn:incoming>
+      <bpmn:incoming>Flow_1y51fne</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0n437du" name="Aprovado" sourceRef="Gateway_1w0hcim" targetRef="Activity_1g1zrzc">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${status != Aprovado }</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_038d2ny" sourceRef="Activity_1g1zrzc" targetRef="Event_118lyxy" />
+    <bpmn:sequenceFlow id="Flow_1y51fne" name="Cancelado ou Pendente" sourceRef="Gateway_1w0hcim" targetRef="Event_118lyxy">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${status == Cancelado || status == Pendente}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Activity_1g1zrzc" name="Cria emprestimo" camunda:delegateExpression="${criarEmprestimoDelegate}">
+      <bpmn:incoming>Flow_0n437du</bpmn:incoming>
+      <bpmn:outgoing>Flow_038d2ny</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="my-project-process">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="269" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="184" y="312" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1td3aht_di" bpmnElement="say-hello">
+        <dc:Bounds x="270" y="247" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1w0hcim_di" bpmnElement="Gateway_1w0hcim" isMarkerVisible="true">
+        <dc:Bounds x="425" y="262" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="415" y="326" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_118lyxy_di" bpmnElement="Event_118lyxy">
+        <dc:Bounds x="728" y="269" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="736" y="315" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cxul7k_di" bpmnElement="Activity_1g1zrzc">
+        <dc:Bounds x="530" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1fp17al_di" bpmnElement="SequenceFlow_1fp17al">
+        <di:waypoint x="215" y="287" />
+        <di:waypoint x="270" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1trqz8q_di" bpmnElement="Flow_1trqz8q">
+        <di:waypoint x="370" y="287" />
+        <di:waypoint x="425" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n437du_di" bpmnElement="Flow_0n437du">
+        <di:waypoint x="450" y="262" />
+        <di:waypoint x="450" y="120" />
+        <di:waypoint x="530" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="456" y="163" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y51fne_di" bpmnElement="Flow_1y51fne">
+        <di:waypoint x="475" y="287" />
+        <di:waypoint x="728" y="287" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="568" y="296" width="68" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_038d2ny_di" bpmnElement="Flow_038d2ny">
+        <di:waypoint x="630" y="120" />
+        <di:waypoint x="746" y="120" />
+        <di:waypoint x="746" y="269" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
 </bpmn:definitions>
