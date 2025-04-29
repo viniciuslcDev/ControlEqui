@@ -80,4 +80,37 @@ public class EmprestimoModel {
     public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
+
+    public Long getIdEmprestimo() {
+        return idEmprestimo;
+    }
+
+    public void setIdEmprestimo(Long idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
+    }
+
+    public FuncionarioModel getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(FuncionarioModel funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public TecnicoModel getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(TecnicoModel tecnico) {
+        this.tecnico = tecnico;
+    }
+
+    public EquipamentoModel getEquipamento() {
+        return equipamento;
+    }
+
+    public void setEquipamento(EquipamentoModel equipamento) {
+        this.equipamento = equipamento;
+    }
+
 }
