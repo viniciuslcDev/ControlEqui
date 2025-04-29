@@ -1,28 +1,32 @@
-package controlequi.com.br.controlequi.Model;
+package controlequi.com.br.controlequi.dto;
 
+import controlequi.com.br.controlequi.Model.EmprestimoModel;
+import controlequi.com.br.controlequi.Model.EquipamentoModel;
+import controlequi.com.br.controlequi.Model.FuncionarioModel;
+import controlequi.com.br.controlequi.Model.TecnicoModel;
 import controlequi.com.br.controlequi.StatusPedido;
-import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "pedido")
-public class PedidoModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PedidoDto {
     private Long idPedido;
 
-
-    @ManyToOne
-    @JoinColumn(name = "idFuncionario")
-    private FuncionarioModel funcionario;
-
-    @ManyToOne
-    @JoinColumn(name = "idTecnico")
-    private FuncionarioModel tecnico;
-
+    private Long funcionario;
+    private Long tecnico;
     private LocalDate dataSolicitacao;
     private String tipoEquipamento;
     private StatusPedido statusPedido;
+
+    public PedidoDto(Long idPedido, Long funcionario, Long tecnico, LocalDate dataSolicitacao, String tipoEquipamento, StatusPedido statusPedido) {
+        this.idPedido = idPedido;
+        this.funcionario = funcionario;
+        this.tecnico = tecnico;
+        this.dataSolicitacao = dataSolicitacao;
+        this.tipoEquipamento = tipoEquipamento;
+        this.statusPedido = statusPedido;
+    }
+
+    public PedidoDto(){}
 
     public Long getIdPedido() {
         return idPedido;
@@ -32,20 +36,19 @@ public class PedidoModel {
         this.idPedido = idPedido;
     }
 
-
-    public FuncionarioModel getFuncionario() {
+    public Long getFuncionario() {
         return funcionario;
     }
 
-    public void setFuncionario(FuncionarioModel funcionario) {
+    public void setFuncionario(Long funcionario) {
         this.funcionario = funcionario;
     }
 
-    public FuncionarioModel getTecnico() {
+    public Long getTecnico() {
         return tecnico;
     }
 
-    public void setTecnico(FuncionarioModel tecnico) {
+    public void setTecnico(Long tecnico) {
         this.tecnico = tecnico;
     }
 
@@ -72,7 +75,4 @@ public class PedidoModel {
     public void setStatusPedido(StatusPedido statusPedido) {
         this.statusPedido = statusPedido;
     }
-
-
-    // getters e setters
 }
