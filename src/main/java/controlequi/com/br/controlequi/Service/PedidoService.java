@@ -1,11 +1,14 @@
 package controlequi.com.br.controlequi.Service;
 
+import controlequi.com.br.controlequi.Controller.BuscaPedidoDelegate;
 import controlequi.com.br.controlequi.Model.FuncionarioModel;
 import controlequi.com.br.controlequi.Model.PedidoModel;
 import controlequi.com.br.controlequi.Repository.PedidoRepository;
 import controlequi.com.br.controlequi.dto.PedidoDto;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +16,9 @@ import java.util.Optional;
 
 @Service
 public class PedidoService {
+
+    private Logger logger = LoggerFactory.getLogger(PedidoService.class);
+
     private final PedidoRepository pedidoRepository;
     private final FuncionarioService funcionarioService;
     private final RuntimeService runtimeService;
@@ -72,8 +78,9 @@ public class PedidoService {
             ProcessInstance processInstance = runtimeService.createProcessInstanceByKey("my-project-process")
                     .setVariable("idPedido", idPedido)
                     .execute();
+            logger.info("Processo iniciado com ID: " + processInstance.getId());
         }catch (Exception e){
-
+            logger.error("Erro ao iniciar o processo: ", e);
         }
     }
 
