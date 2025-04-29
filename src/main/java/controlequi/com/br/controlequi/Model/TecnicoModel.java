@@ -1,6 +1,5 @@
 package controlequi.com.br.controlequi.Model;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -15,11 +14,21 @@ public class TecnicoModel {
     @JoinColumn(name = "idFuncionario", referencedColumnName = "idFuncionario")
     private FuncionarioModel funcionario;
 
-    public  TecnicoModel(){}
+    public TecnicoModel() {}
+
+    public Long getIdTecnico() {
+        return idTecnico;
+    }
+
+    public void setIdTecnico(Long idTecnico) {
+        this.idTecnico = idTecnico;
+    }
 
     public FuncionarioModel getFuncionario() {
         return funcionario;
     }
 
-
+    public void setFuncionario(FuncionarioModel funcionario) {
+        this.funcionario = funcionario;
+    }
 }
