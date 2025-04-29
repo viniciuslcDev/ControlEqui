@@ -22,4 +22,6 @@ public class TecnicoService {
     public List<TecnicoModel> listarTodosTecnicos(){
         return tecnicoRepository.findAll();
     }
+
+
 }

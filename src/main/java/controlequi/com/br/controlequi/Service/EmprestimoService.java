@@ -18,45 +18,43 @@ import java.util.Optional;
 public class EmprestimoService {
 
     private final EmprestimoRepository emprestimoRepository;
+    private final EquipamentoRepository equipamentoRepository;
+    private final TecnicoRepository tecnicoRepository;
     private final FuncionarioRepository funcionarioRepository;
 
-    private final TecnicoRepository tecnicoRepository;
-    private final EquipamentoRepository equipamentoRepository;
 
-    public EmprestimoService(EmprestimoRepository emprestimoRepository,
-                             FuncionarioRepository funcionarioRepository, TecnicoRepository tecnicoRepository,
-                             EquipamentoRepository equipamentoRepository) {
+    public EmprestimoService(EmprestimoRepository emprestimoRepository, EquipamentoRepository equipamentoRepository, TecnicoRepository tecnicoRepository, FuncionarioRepository funcionarioRepository){
         this.emprestimoRepository = emprestimoRepository;
-        this.funcionarioRepository = funcionarioRepository;
-
-        this.tecnicoRepository = tecnicoRepository;
         this.equipamentoRepository = equipamentoRepository;
+        this.tecnicoRepository = tecnicoRepository;
+        this.funcionarioRepository = funcionarioRepository;
     }
 
     public List<EmprestimoModel> listarEmprestimo() {
         return emprestimoRepository.findAll();
     }
 
-    public EmprestimoModel salvarEmprestimo(EmprestimoDto dto) {
-        FuncionarioModel funcionario = funcionarioRepository.findById(dto.getIdFuncionario())
-                .orElseThrow(() -> new RuntimeException("Funcionario não encontrado"));
+    public EmprestimoModel salvarEmprestimo(EmprestimoDto emprestimoDto) {
+        // Buscar Técnico pelo ID
 
-        TecnicoModel tecnico = tecnicoRepository.findById(dto.getIdTecnico())
-                .orElseThrow(() -> new RuntimeException("Tecnico não encontrado"));
+        FuncionarioModel tecnico = funcionarioRepository.findById(emprestimoDto.getIdTecnico())
+                .orElseThrow(() -> new RuntimeException("Técnico não encontrado com ID: " + emprestimoDto.getIdTecnico()));
 
-        EquipamentoModel equipamento = equipamentoRepository.findById(dto.getIdEquipamento())
-                .orElseThrow(() -> new RuntimeException("Equipamento não encontrado"));
+        // Buscar Equipamento pelo ID
+        EquipamentoModel equipamento = equipamentoRepository.findById(emprestimoDto.getIdEquipamento())
+                .orElseThrow(() -> new RuntimeException("Equipamento não encontrado com ID: " + emprestimoDto.getIdEquipamento()));
 
-        EmprestimoModel emprestimo = new EmprestimoModel();
-        emprestimo.setIdEmprestimo(dto.getIdEmprestimo());
-        emprestimo.setFuncionario(funcionario);
-        emprestimo.setTecnico(tecnico);
-        emprestimo.setDataEmprestimo(dto.getDataEmprestimo());
-        emprestimo.setDataDevolucao(dto.getDataDevolucao());
-        emprestimo.setEquipamento(equipamento);
+        // Criar o modelo de Emprestimo
+        EmprestimoModel emprestimoModel = new EmprestimoModel();
+        emprestimoModel.setDataEmprestimo(emprestimoDto.getDataEmprestimo());
+        emprestimoModel.setEquipamento(equipamento);
+        emprestimoModel.setTecnico(tecnico); // Aqui você deve passar o técnico encontrado
 
-        return emprestimoRepository.save(emprestimo);
+        // Salvar o Emprestimo no banco
+        return emprestimoRepository.save(emprestimoModel);
+
     }
+
 
     public Optional<EmprestimoModel> buscarEsprestimoPorId(Long id) {
         return emprestimoRepository.findById(id);
