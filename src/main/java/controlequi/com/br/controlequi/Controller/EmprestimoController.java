@@ -2,6 +2,7 @@ package controlequi.com.br.controlequi.Controller;
 
 import controlequi.com.br.controlequi.Model.EmprestimoModel;
 import controlequi.com.br.controlequi.Service.EmprestimoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/emprestimo")
+@Tag(name = "Emprestimo")
 public class EmprestimoController {
     private final EmprestimoService emprestimoService;
 

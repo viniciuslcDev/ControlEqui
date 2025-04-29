@@ -2,6 +2,7 @@ package controlequi.com.br.controlequi.Controller;
 
 import controlequi.com.br.controlequi.Model.FuncionarioModel;
 import controlequi.com.br.controlequi.Service.FuncionarioService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/funcionarios") // URL base para a API
+@Tag(name = "Funcionario")
 public class FuncionarioController {
 
     @Autowired
