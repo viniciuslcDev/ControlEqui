@@ -32,7 +32,8 @@ public class FuncionarioController {
                 funcionarioModel.getCargoArea(),
                 funcionarioModel.getStatusEmpregaticio(),
                 funcionarioModel.getisTecnico(),
-                funcionarioModel.getEmailFuncionario()
+                funcionarioModel.getEmailFuncionario(),
+                funcionarioModel.getStatusUsuario()
         );
 
         return ResponseEntity.ok(respostaDto);
@@ -73,5 +74,11 @@ public class FuncionarioController {
     public ResponseEntity<Void> deletarFuncionario(@PathVariable Long id) {
         funcionarioService.deletarFuncionario(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<?> buscarPorStatus(@PathVariable String status) {
+        List<FuncionarioModel> funcionario = funcionarioService.buscarPorStatusUsuario(status);
+        return ResponseEntity.ok(funcionario);
     }
 }

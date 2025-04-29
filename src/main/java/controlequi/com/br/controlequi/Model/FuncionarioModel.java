@@ -1,5 +1,6 @@
 package controlequi.com.br.controlequi.Model;
 
+import controlequi.com.br.controlequi.StatusUsuario;
 import jakarta.persistence.*;
 
 @Entity
@@ -29,12 +30,22 @@ public class FuncionarioModel {
     @Column(nullable = false, unique = true)
     private String emailFuncionario;
 
+    private StatusUsuario statusUsuario;
+
     // Construtor vazio
     public FuncionarioModel() {
     }
 
     // Getters e Setters
 
+
+    public StatusUsuario getStatusUsuario() {
+        return statusUsuario;
+    }
+
+    public void setStatusUsuario(StatusUsuario statusUsuario) {
+        this.statusUsuario = statusUsuario;
+    }
 
     public Boolean getTecnico() {
         return isTecnico;
