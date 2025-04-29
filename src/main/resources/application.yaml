@@ -1,0 +1,20 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://mysql-15307084-camilojoaoestevao-550e.l.aivencloud.com:24971/defaultdb?user=avnadmin&password=AVNS_YpkrAEcCb8p5X2-AIBj&sslmode=disable&allowPublicKeyRetrieval=true
+#    driver-class-name: org.postgresql.Driver  # Ajuste para o driver correto do PostgreSQL
+#    hikari:
+#      maximum-pool-size: 10
+#      transaction-isolation: TRANSACTION_READ_COMMITTED
+
+#camunda:
+#  bpm:
+#    database:
+#      schema-update: true
+
+spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+
+camunda.bpm.admin-user:
+  id: demo
+  password: demo
+
+
