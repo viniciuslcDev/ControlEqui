@@ -51,9 +51,9 @@ public class CriarEmprestimoDelegate implements JavaDelegate {
 
             emprestimoDto.setIdFuncionario(pedidoModel.getFuncionario().getIdFuncionario());
             emprestimoDto.setIdTecnico(pedidoModel.getTecnico().getIdFuncionario());
-            emprestimoDto.setIdEmprestimo(equipamento.getIdEquipamento());
             emprestimoDto.setDataDevolucao(LocalDate.now().plusMonths(3));
             emprestimoDto.setDataEmprestimo(LocalDate.now());
+            emprestimoDto.setIdEquipamento(equipamento.getIdEquipamento());
             emprestimoService.salvarEmprestimo(emprestimoDto);
         }
 
