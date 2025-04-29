@@ -2,6 +2,7 @@ package controlequi.com.br.controlequi.Service;
 
 import controlequi.com.br.controlequi.Model.EquipamentoModel;
 import controlequi.com.br.controlequi.Repository.EquipamentoRepository;
+import controlequi.com.br.controlequi.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +59,10 @@ public class EquipamentoService {
     }
 
     public void deletarEquipamento(Long id) {
+    }
+
+    public List<EquipamentoModel> buscarPorStatus(String status){
+        StatusEnum statusEnum = StatusEnum.valueOf(status.toUpperCase());
+        return equipamentoRepository.findByStatus(statusEnum);
     }
 }

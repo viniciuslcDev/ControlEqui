@@ -1,13 +1,11 @@
 package controlequi.com.br.controlequi.Controller;
 
-import controlequi.com.br.controlequi.Model.EmprestimoModel;
 import controlequi.com.br.controlequi.Model.EquipamentoModel;
 import controlequi.com.br.controlequi.Model.PedidoModel;
-import controlequi.com.br.controlequi.Repository.EmprestimoRepository;
-import controlequi.com.br.controlequi.Repository.EquipamentoRepository;
 import controlequi.com.br.controlequi.Repository.PedidoRepository;
 import controlequi.com.br.controlequi.Service.EmprestimoService;
 import controlequi.com.br.controlequi.Service.EquipamentoService;
+import controlequi.com.br.controlequi.dto.EmprestimoDto;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.slf4j.Logger;
@@ -15,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 
 @Component
@@ -50,16 +47,17 @@ public class CriarEmprestimoDelegate implements JavaDelegate {
         if (equipamento != null) {
             pedidoModel.setEquipamento(equipamento);
             pedidoRepository.save(pedidoModel);
-            EmprestimoModel emprestimoModel = new EmprestimoModel();
+            EmprestimoDto emprestimoDto = new EmprestimoDto();
 
-            emprestimoModel.setFuncionario(pedidoModel.getFuncionario());
-            emprestimoModel.setEquipamento(equipamento);
-            emprestimoModel.setIdEmprestimo(equipamento.getIdEquipamento());
-            emprestimoModel.setDataDevolucao(LocalDate.now().plusMonths(3));
-            emprestimoModel.setDataEmprestimo(LocalDate.now());
-            emprestimoService.salvarEmprestimo(emprestimoModel);
+            emprestimoDto.setIdFuncionario(pedidoModel.getFuncionario().getIdFuncionario());
+            emprestimoDto.setIdTecnico(pedidoModel.getTecnico().getIdTecnico());
+            emprestimoDto.setIdEmprestimo(equipamento.getIdEquipamento());
+            emprestimoDto.setDataDevolucao(LocalDate.now().plusMonths(3));
+            emprestimoDto.setDataEmprestimo(LocalDate.now());
+            emprestimoService.salvarEmprestimo(emprestimoDto);
         }
 
     }
+
 
 }

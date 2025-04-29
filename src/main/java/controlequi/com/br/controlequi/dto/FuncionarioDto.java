@@ -1,42 +1,27 @@
-package controlequi.com.br.controlequi.Model;
+package controlequi.com.br.controlequi.dto;
 
 import controlequi.com.br.controlequi.StatusUsuario;
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "funcionarios")
-public class FuncionarioModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FuncionarioDto {
     private Long idFuncionario;
-
-    @Column(nullable = false)
     private String nomeFuncionario;
-
-    @Column(unique = true, nullable = false, length = 11)
     private String cpfFuncionario;
-
-    @Column(nullable = false)
     private String cargoArea;
-
-    @Column(nullable = false)
     private String statusEmpregaticio;
-
-    @Column(nullable = false)
     private Boolean isTecnico;
-
-    // Novo campo adicionado:
-    @Column(nullable = false, unique = true)
     private String emailFuncionario;
-
     private StatusUsuario statusUsuario;
 
-    // Construtor vazio
-    public FuncionarioModel() {
+    public FuncionarioDto(Long idFuncionario, String nomeFuncionario, String cpfFuncionario, String cargoArea, String statusEmpregaticio, Boolean isTecnico, String emailFuncionario, StatusUsuario statusUsuario) {
+        this.idFuncionario = idFuncionario;
+        this.nomeFuncionario = nomeFuncionario;
+        this.cpfFuncionario = cpfFuncionario;
+        this.cargoArea = cargoArea;
+        this.statusEmpregaticio = String.valueOf(StatusUsuario.valueOf(statusEmpregaticio));
+        this.isTecnico = isTecnico;
+        this.emailFuncionario = emailFuncionario;
+        this.statusUsuario = this.statusUsuario;
     }
-
-    // Getters e Setters
 
 
     public StatusUsuario getStatusUsuario() {
@@ -45,10 +30,6 @@ public class FuncionarioModel {
 
     public void setStatusUsuario(StatusUsuario statusUsuario) {
         this.statusUsuario = statusUsuario;
-    }
-
-    public Boolean getTecnico() {
-        return isTecnico;
     }
 
     public Long getIdFuncionario() {
@@ -88,15 +69,15 @@ public class FuncionarioModel {
     }
 
     public void setStatusEmpregaticio(String statusEmpregaticio) {
-        this.statusEmpregaticio = statusEmpregaticio;
+        this.statusEmpregaticio = String.valueOf(StatusUsuario.valueOf(statusEmpregaticio));
     }
 
-    public Boolean getisTecnico() {
+    public Boolean getTecnico() {
         return isTecnico;
     }
 
-    public void setIsTecnico(Boolean isTecnico) {
-        this.isTecnico = isTecnico;
+    public void setTecnico(Boolean tecnico) {
+        isTecnico = tecnico;
     }
 
     public String getEmailFuncionario() {
@@ -106,4 +87,6 @@ public class FuncionarioModel {
     public void setEmailFuncionario(String emailFuncionario) {
         this.emailFuncionario = emailFuncionario;
     }
+
+
 }

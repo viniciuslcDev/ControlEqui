@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "emprestimo")
+@Table(name = "emprestimoequi")
 public class EmprestimoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +18,8 @@ public class EmprestimoModel {
     private FuncionarioModel funcionario;
 
     @ManyToOne
-    @JoinColumn(name = "idTecnico", referencedColumnName = "idTecnico")
-    private TecnicoModel tecnico;
+    @JoinColumn(name = "idTecnico", referencedColumnName = "idFuncionario")
+    private FuncionarioModel tecnico;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataEmprestimo;
@@ -33,6 +33,37 @@ public class EmprestimoModel {
 
     public EmprestimoModel(){}
 
+    public void setIdEmprestimo(Long idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
+    }
+
+    public void setFuncionario(FuncionarioModel funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public void setTecnico(FuncionarioModel tecnico) {
+        this.tecnico = tecnico;
+    }
+
+    public void setEquipamento(EquipamentoModel equipamento) {
+        this.equipamento = equipamento;
+    }
+
+    public Long getIdEmprestimo() {
+        return idEmprestimo;
+    }
+
+    public FuncionarioModel getFuncionario() {
+        return funcionario;
+    }
+
+    public FuncionarioModel getTecnico() {
+        return tecnico;
+    }
+
+    public EquipamentoModel getEquipamento() {
+        return equipamento;
+    }
 
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
@@ -50,36 +81,8 @@ public class EmprestimoModel {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public Long getIdEmprestimo() {
-        return idEmprestimo;
-    }
 
-    public void setIdEmprestimo(Long idEmprestimo) {
-        this.idEmprestimo = idEmprestimo;
-    }
 
-    public FuncionarioModel getFuncionario() {
-        return funcionario;
-    }
 
-    public void setFuncionario(FuncionarioModel funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public TecnicoModel getTecnico() {
-        return tecnico;
-    }
-
-    public void setTecnico(TecnicoModel tecnico) {
-        this.tecnico = tecnico;
-    }
-
-    public EquipamentoModel getEquipamento() {
-        return equipamento;
-    }
-
-    public void setEquipamento(EquipamentoModel equipamento) {
-        this.equipamento = equipamento;
-    }
 
 }
