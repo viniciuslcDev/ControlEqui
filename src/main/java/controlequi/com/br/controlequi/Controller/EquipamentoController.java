@@ -78,4 +78,11 @@ public class EquipamentoController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Se o equipamento não for encontrado
     }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<?> buscarPorStatus(@PathVariable String status) {
+        List<EquipamentoModel> equipamento = equipamentoService.buscarPorStatus(status);
+        return ResponseEntity.ok(equipamento);
+    }
+
 }

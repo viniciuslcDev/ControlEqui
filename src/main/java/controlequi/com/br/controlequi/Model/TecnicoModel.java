@@ -24,9 +24,7 @@ public class TecnicoModel {
         this.idTecnico = idTecnico;
     }
 
-    public Long getIdTecnico() {
-        return idTecnico;
-    }
+
 
     public FuncionarioModel getFuncionario() {
         return funcionario;

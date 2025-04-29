@@ -1,5 +1,6 @@
 package controlequi.com.br.controlequi.Model;
 
+import controlequi.com.br.controlequi.StatusEnum;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -27,7 +28,19 @@ public class EquipamentoModel {
     @Column(name = "serial_number", nullable = false, unique = true)
     private int serialNumber;  // Garantir que o SerialNumber seja único
 
+    private StatusEnum status;
+
     // Getters e Setters
+
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
+    }
+
     public Long getIdEquipamento() {
         return idEquipamento;
     }
