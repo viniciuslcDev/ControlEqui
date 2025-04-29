@@ -49,7 +49,7 @@ public class FuncionarioService {
             funcionario.setCpfFuncionario(funcionarioAtualizado.getCpfFuncionario());
             funcionario.setCargoArea(funcionarioAtualizado.getCargoArea());
             funcionario.setStatusEmpregaticio(funcionarioAtualizado.getStatusEmpregaticio());
-            funcionario.setIsTecnico(funcionarioAtualizado.getisTecnico());
+            funcionario.setTecnico(funcionarioAtualizado.getTecnico());
             funcionario.setEmailFuncionario(funcionarioAtualizado.getEmailFuncionario());
             return funcionarioRepository.save(funcionario);
         } else {
