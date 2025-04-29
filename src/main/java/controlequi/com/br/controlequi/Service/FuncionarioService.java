@@ -24,7 +24,7 @@ public class FuncionarioService {
         model.setCargoArea(dto.getCargoArea());
         model.setStatusEmpregaticio(dto.getStatusEmpregaticio());
         model.setEmailFuncionario(dto.getEmailFuncionario());
-        model.setIsTecnico(dto.getTecnico());
+        model.setTecnico(dto.getTecnico());
         model.setStatusUsuario(dto.getStatusUsuario());
 
         return funcionarioRepository.save(model);

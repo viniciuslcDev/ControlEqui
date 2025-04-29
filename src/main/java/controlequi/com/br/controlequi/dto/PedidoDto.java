@@ -40,8 +40,8 @@ public class PedidoDto {
         return funcionario;
     }
 
-    public void setFuncionario(FuncionarioModel funcionario) {
-        this.funcionario = funcionario.getIdFuncionario();
+    public void setFuncionario(Long funcionario) {
+        this.funcionario = funcionario;
     }
 
     public Long getTecnico() {

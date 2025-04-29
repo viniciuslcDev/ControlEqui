@@ -33,7 +33,7 @@ public class FuncionarioController {
                 funcionarioModel.getCpfFuncionario(),
                 funcionarioModel.getCargoArea(),
                 funcionarioModel.getStatusEmpregaticio(),
-                funcionarioModel.getisTecnico(),
+                funcionarioModel.getTecnico(),
                 funcionarioModel.getEmailFuncionario(),
                 funcionarioModel.getStatusUsuario()
         );
